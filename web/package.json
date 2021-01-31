@@ -22,8 +22,9 @@
     "react": "^16.13.1",
     "react-animated-text": "0.1.4",
     "react-dom": "^16.13.1",
-    "react-modal": "3.12.1",
-    "react-toastify": "7.0.2"
+    "react-toastify": "7.0.2",
+    "uglifyjs-webpack-plugin": "2.2.0",
+    "webpack": "5.19.0"
   },
   "devDependencies": {
     "autoprefixer": "9.8.6",
