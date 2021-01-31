@@ -8,10 +8,10 @@
 [web]
   port = 8910
   apiProxyPath = "/.netlify/functions"
-  includeEnvironmentVariables=["STRIPE_PUBLIC]
+  includeEnvironmentVariables=['STRIPE_PUBLIC']
 [api]
   port = 8911
   schemaPath = "./api/db/schema.prisma"
-  includeEnvironmentVariables=["STRIPE_SECRET]
+  includeEnvironmentVariables=['STRIPE_SECRET']
 [browser]
   open = true
