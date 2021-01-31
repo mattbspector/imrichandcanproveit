@@ -16,8 +16,18 @@
     "@redwoodjs/forms": "^0.23.0",
     "@redwoodjs/router": "^0.23.0",
     "@redwoodjs/web": "^0.23.0",
+    "@stripe/react-stripe-js": "1.2.1",
+    "@stripe/stripe-js": "1.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-animated-text": "0.1.4",
+    "react-dom": "^16.13.1",
+    "react-modal": "3.12.1",
+    "react-toastify": "7.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "9.8.6",
+    "postcss-loader": "4.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }
