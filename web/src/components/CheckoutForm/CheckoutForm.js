@@ -30,10 +30,6 @@ const CheckoutForm = ({
       const secret = data?.data?.createPaymentIntent?.clientSecret
       if (secret) {
         setClientSecret(secret)
-      } else {
-        setError(
-          'Please refresh the page, it looks like someone else is even richer!'
-        )
       }
     }
 
@@ -78,7 +74,6 @@ const CheckoutForm = ({
     ev.preventDefault()
     setProcessing(true)
     const verifyData = await checkVerification()
-    console.log(verifyData)
     const isVerified = verifyData?.data?.verifyPayment?.verified
     if (isVerified) {
       const payload = await stripe.confirmCardPayment(clientSecret, {
@@ -155,7 +150,7 @@ const CheckoutForm = ({
         />
         <button
           className="checkoutButton"
-          disabled={processing || disabled || fieldsNotFilled}
+          disabled={processing || disabled || fieldsNotFilled || succeeded}
           id="submit"
         >
           <span id="button-text">

@@ -7,7 +7,7 @@ import { useMutation } from '@redwoodjs/web'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 
-const promise = loadStripe('pk_test_d6LqpAgukFdN51M0Dh57A5pK')
+const promise = loadStripe(process.env.STRIPE_PUBLIC)
 
 export const QUERY = gql`
   query LEADERS {
@@ -59,7 +59,7 @@ export const Empty = () => {
 }
 
 export const Success = ({ leaders }) => {
-  const [currentLeader, setCurrentLeader] = useState(leaders[0])
+  const [currentLeader, setCurrentLeader] = useState(leaders ? leaders[0] : {})
   const [sendPayment] = useMutation(SEND_PAYMENT)
   const [createLeader] = useMutation(CREATE_LEADER)
   const [verifyPayment] = useMutation(VERIFY_PAYMENT)
@@ -85,21 +85,24 @@ export const Success = ({ leaders }) => {
     return response
   }
 
-  console.log(leaders)
   return (
     <div className="table h-full m-auto">
-      <div className="table-cell text-center align-middle">
-        <MainText currentLeader={currentLeader} />
-        <Elements stripe={promise}>
-          <CheckoutForm
-            createPayment={createPayment}
-            addLeader={addLeader}
-            amount={currentLeader.amount + 1}
-            setCurrentLeader={setCurrentLeader}
-            checkVerification={checkVerification}
-          />
-        </Elements>
-      </div>
+      {currentLeader && currentLeader.amount ? (
+        <div className="table-cell text-center align-middle">
+          <MainText currentLeader={currentLeader} />
+          <Elements stripe={promise}>
+            <CheckoutForm
+              createPayment={createPayment}
+              addLeader={addLeader}
+              amount={currentLeader.amount + 1}
+              setCurrentLeader={setCurrentLeader}
+              checkVerification={checkVerification}
+            />
+          </Elements>
+        </div>
+      ) : (
+        <div />
+      )}
     </div>
   )
 }

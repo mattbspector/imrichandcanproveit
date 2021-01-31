@@ -1,6 +1,6 @@
 import { db } from 'src/lib/db'
 import { calculateOrderAmount } from 'src/services/payments'
-const stripe = require('stripe')('sk_test_IpZ4kubn7q0zrnB8V9l8YAoU')
+const stripe = require('stripe')(process.env.STRIPE_SECRET)
 
 export const leaders = () => {
   return db.leader.findMany({
