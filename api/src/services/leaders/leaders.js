@@ -2,14 +2,16 @@ import { db } from 'src/lib/db'
 import { calculateOrderAmount } from 'src/services/payments'
 const stripe = require('stripe')(process.env.STRIPE_SECRET)
 
-export const leaders = () => {
-  return db.leader.findMany({
+export const leaders = async () => {
+  const leaders = await db.leader.findMany({
     orderBy: [
       {
         amount: 'desc',
       },
     ],
   })
+
+  return leaders
 }
 
 export const leader = ({ id }) => {
