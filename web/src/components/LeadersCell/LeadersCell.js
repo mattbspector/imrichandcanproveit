@@ -47,6 +47,10 @@ const CREATE_LEADER = gql`
 
 export const Loading = () => <div>Loading...</div>
 
+export const Failure = () => (
+  <div className="text-white">There was an error, please refresh</div>
+)
+
 export const Empty = () => {
   return (
     <div className="rw-text-center">
