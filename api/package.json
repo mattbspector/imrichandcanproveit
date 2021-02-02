@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@prisma/cli": "2.15.0",
+    "@prisma/cli": "2.11.0",
     "@redwoodjs/api": "^0.23.0",
     "stripe": "8.132.0"
   }
+
 }
