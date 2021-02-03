@@ -41,6 +41,7 @@ const CREATE_LEADER = gql`
       firstName
       lastName
       amount
+      affiliate
     }
   }
 `
@@ -62,7 +63,7 @@ export const Empty = () => {
   )
 }
 
-export const Success = ({ leaders }) => {
+export const Success = ({ leaders, af }) => {
   const [currentLeader, setCurrentLeader] = useState(leaders ? leaders[0] : {})
   const [sendPayment] = useMutation(SEND_PAYMENT)
   const [createLeader] = useMutation(CREATE_LEADER)
@@ -96,6 +97,7 @@ export const Success = ({ leaders }) => {
           <MainText currentLeader={currentLeader} />
           <Elements stripe={promise}>
             <CheckoutForm
+              affiliate={af}
               createPayment={createPayment}
               addLeader={addLeader}
               amount={currentLeader.amount + 1}

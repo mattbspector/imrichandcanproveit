@@ -5,6 +5,7 @@ export const schema = gql`
     lastName: String!
     amount: Int!
     email: String!
+    affiliate: String
   }
 
   type Query {
@@ -24,6 +25,7 @@ export const schema = gql`
     firstName: String!
     lastName: String!
     email: String!
+    affiliate: String
   }
 
   input UpdateLeaderInput {
@@ -31,6 +33,7 @@ export const schema = gql`
     lastName: String
     amount: Int
     email: String
+    affiliate: String
   }
 
   type Mutation {

@@ -11,6 +11,7 @@ const CheckoutForm = ({
   addLeader,
   setCurrentLeader,
   checkVerification,
+  affiliate,
 }) => {
   const [succeeded, setSucceeded] = useState(false)
   const [error, setError] = useState(null)
@@ -89,7 +90,7 @@ const CheckoutForm = ({
         setError(`Payment failed ${payload.error.message}`)
         setProcessing(false)
       } else {
-        addLeader({ firstName, lastName, email })
+        addLeader({ firstName, lastName, email, affiliate })
         setCurrentLeader({ firstName, lastName, email, amount })
         setError(null)
         setProcessing(false)
