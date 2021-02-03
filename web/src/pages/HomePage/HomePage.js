@@ -3,8 +3,11 @@ import BasicLayout from 'src/layouts/BasicLayout'
 import LeadersCell from 'src/components/LeadersCell'
 import { Link, routes } from '@redwoodjs/router'
 import TwitterIcon from '@material-ui/icons/Twitter'
+import { useParams } from '@redwoodjs/router'
 
 const HomePage = () => {
+  const { af } = useParams()
+
   return (
     <BasicLayout>
       <div>
@@ -26,7 +29,7 @@ const HomePage = () => {
           </span>
         </Link>
       </div>
-      <LeadersCell />
+      <LeadersCell af={af} />
     </BasicLayout>
   )
 }
