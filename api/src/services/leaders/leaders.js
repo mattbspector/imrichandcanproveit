@@ -1,6 +1,7 @@
 import { db } from 'src/lib/db'
 import { calculateOrderAmount } from 'src/services/payments'
 const stripe = require('stripe')(process.env.STRIPE_SECRET)
+import { writeTweet } from 'src/services/twitter'
 
 export const leaders = async () => {
   const leaders = await db.leader.findMany({
@@ -28,6 +29,9 @@ export const createLeader = async ({ input }) => {
       },
     ],
   })
+
+  writeTweet({ ...input, amount: currentLeader.amount + 1 })
+
   return db.leader.create({
     data: { ...input, amount: currentLeader.amount + 1 },
   })
