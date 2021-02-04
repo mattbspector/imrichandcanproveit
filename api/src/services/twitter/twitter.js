@@ -11,7 +11,7 @@ export const writeTweet = (input) => {
   T.post(
     'statuses/update',
     {
-      status: `💰 Hey @elonmusk , ${input.firstName} ${input.lastName} is RICHER than you. They paid $${input.amount} to put their name on https://imrichandicanproveit.com/ 💰`,
+      status: `💰 Hey @MrBeastYT , ${input.firstName} ${input.lastName} is RICHER than you. They paid $${input.amount} to put their name on https://imrichandicanproveit.com/ 💰`,
     },
     function (err, data, _response) {
       console.log(data)
